@@ -6,12 +6,14 @@ const { checkUser } = require('../middlewares/userMiddleware');
 
 const authentication = require('../middlewares/authentication');
 
-const { user } = require('../controllers');
+const { createUser, getAll, getById, deleteUser } = require('../controllers/userController');
 
-router.post('/', checkUser, user.createUser);
+router.post('/', checkUser, createUser);
 
-router.get('/', authentication, user.getAll);
+router.get('/', authentication, getAll);
 
-router.get('/:id', authentication, user.getById);
+router.get('/:id', authentication, getById);
+
+router.delete('/:id', authentication, deleteUser);
 
 module.exports = router;

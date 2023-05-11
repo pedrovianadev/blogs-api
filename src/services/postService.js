@@ -65,9 +65,29 @@ const update = async ({ id, title, content, userId }) => {
     return true;
 };
 
+const getAllById = async (id) => {
+    const [post] = await BlogPost.findAll({
+        where: { id },
+    });
+
+    return post;
+};
+
+const deletePost = async ({ id, userId }) => {
+    const post = await getByIdUserId(id, userId);
+
+    if (!post) return false;
+
+    await BlogPost.destroy({ where: { id, userId } });
+
+    return true;
+};
+
 module.exports = {
     createPost,
     getAllByUserId,
     getByIdUserId,
     update,
+    getAllById,
+    deletePost,
 };
