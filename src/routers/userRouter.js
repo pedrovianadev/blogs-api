@@ -12,4 +12,6 @@ router.post('/', checkUser, user.createUser);
 
 router.get('/', authentication, user.getAll);
 
+router.get('/:id', authentication, user.getById);
+
 module.exports = router;
