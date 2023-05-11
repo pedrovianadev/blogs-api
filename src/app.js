@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { loginRouter, userRouter } = require('./routers');
+const { loginRouter, userRouter, categoriesRouter } = require('./routers');
 // ...
 const error = require('./middlewares/error');
 
@@ -16,6 +16,7 @@ app.use(express.json());
 // ...
 app.use('/login', loginRouter);
 app.use('/user', userRouter);
+app.use('/categories', categoriesRouter);
 app.use(error);
 
 // É importante exportar a constante `app`,
