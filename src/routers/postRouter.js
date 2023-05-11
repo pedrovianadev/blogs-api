@@ -6,8 +6,12 @@ const { checkPost } = require('../middlewares/postMiddleware');
 
 const authentication = require('../middlewares/authentication');
 
-const { createPost } = require('../controllers/postController');
+const { createPost, getAllByUserId, getByIdUserId } = require('../controllers/postController');
 
 router.post('/', authentication, checkPost, createPost);
+
+router.get('/', authentication, getAllByUserId);
+
+router.get('/:id', authentication, getByIdUserId);
 
 module.exports = router;
